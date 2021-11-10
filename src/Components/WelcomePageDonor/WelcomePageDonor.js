@@ -1,9 +1,16 @@
 import './WelcomePageDonor.css'
+import {useNavigate} from 'react-router-dom'
 import {Link} from 'react-router-dom'
 import {FaSearch} from 'react-icons/fa'
 import {IoCreateOutline} from 'react-icons/io5'
 import {BiLogOut} from 'react-icons/bi'
-const WelcomePageDonor = () =>  {
+
+const WelcomePageDonor = ({setIsLoggedIn}) =>  {
+    const navigate = useNavigate();
+    const onLogOut = () => {
+        setIsLoggedIn(false);
+        navigate('/');
+    } 
     return ( 
     <div className='donor-container'>
         <div className='sidebar'>
@@ -25,7 +32,7 @@ const WelcomePageDonor = () =>  {
                 </div>
                 Search Blood Request
             </Link>
-            <button className="button-row">
+            <button className="button-row" onClick={onLogOut}>
                 <div className='sbdico'>
                     <BiLogOut/>
                 </div>

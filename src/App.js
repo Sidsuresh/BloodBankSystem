@@ -18,7 +18,7 @@ function App() {
           <Route path="/signup" element={<Registration />}/>
           <Route path="/login" element={<Login setIsLoggedIn={setIsLoggedIn} />}/>
           {/* <Route path="/users" element={isLoggedIn ? <Home />:<LandingPage/>}></Route> */}
-          <Route path="/user/donor" element={isLoggedIn ? <WelcomePageDonor />:<LandingPage />}></Route>
+          <Route path="/user/donor" element={isLoggedIn ? <WelcomePageDonor setIsLoggedIn={setIsLoggedIn} />:<LandingPage />}></Route>
         </Routes>
       </div>
     </Router>

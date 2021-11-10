@@ -30,7 +30,7 @@ const Login = ({setIsLoggedIn}) =>  {
                         </p>
 
                         <p>
-                            <input type = "submit" value = "Submit" onClick={
+                            <input type = "submit" value = "Login" onClick= {
                                 () => {
                                     setIsLoggedIn(true);
                                     navigate('/user/donor');
