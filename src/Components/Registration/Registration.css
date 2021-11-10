@@ -1,0 +1,118 @@
+.register h1{
+    margin-top: 3%;
+}
+.reg-container {
+    display: flex;
+    margin-top: 3%;
+    justify-content: space-evenly;
+    flex-direction: row;
+}
+
+.reg-card {
+    display: flex;
+    justify-content: space-evenly;
+    background: white;
+    align-items: left;
+    flex-direction: column;
+    border-radius: 25px;
+    width: 30%;
+    height: 100%;
+    min-height: 340px;
+    box-shadow: 0 0px 20px rgba(0,0,0,0.4);
+    font-family:'Trebuchet MS', sans-serif;
+    font-size: 1.5rem;
+    padding: 2.5%;
+    text-align: left;
+}
+
+.reg-card label{
+    width: 200px;
+}
+
+.reg-card .radio{
+    font-size: 1.2rem;
+    padding: 1.5%;
+}
+
+/* .reg-card input[type="radio"]{
+    
+} */
+
+.reg-card input[type="text"]{
+    position: absolute;
+    left: 50%;
+    width: 150px;
+    height: 15px;
+    font-size: large;
+    border-color: lightgray;
+    border-radius: 5px;
+}
+
+.reg-card input[type="password"]{
+    position: absolute;
+    left: 50%;
+    width: 150px;
+    height: 15px;
+    font-size: large;
+    border-color: lightgray;
+    border-radius: 5px;
+}
+
+.reg-card input[type="date"]{
+    position: absolute;
+    left: 50%;
+    width: 150px;
+    height: 15px;
+    font-size: large;
+    border-color: lightgray;
+    border-radius: 5px;
+}
+
+.reg-card textarea {
+    position: absolute;
+    left: 50%;
+    font-size: 1.2rem;
+    width: 150px;
+    height: 45px;
+    border: 2px solid lightgray;
+    border-radius: 5px;
+}
+
+.reg-card input[type="submit"]{
+    border: 2px solid #53c73e;
+    outline: none;
+    background: #53c73e;
+    position: relative;
+    bottom: 3%;
+    margin: 1%;
+    text-align: center;
+    font-size: 1.1rem;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
+    color: whitesmoke;  
+    cursor: pointer;
+    padding: 2% 4%;
+    border-radius: 24px;
+    transition: 0.25s;
+    transform: translate(20%, 100%);
+}
+
+.reg-card input[type="reset"]{
+    border: 2px solid red;
+    outline: none;
+    background: red;
+    position: relative;
+    bottom: 3%;
+    left: 50%;
+    margin: 1%;
+    text-align: center;
+    font-size: 1.1rem;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
+    color: whitesmoke;  
+    cursor: pointer;
+    padding: 2% 4%;
+    border-radius: 24px;
+    transition: 0.25s;
+    transform: translate(20%, 100%);
+}
