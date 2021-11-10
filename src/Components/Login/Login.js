@@ -1,7 +1,7 @@
 import './Login.css'
 import {useNavigate} from 'react-router-dom'
 
-const Login = () =>  {
+const Login = ({setIsLoggedIn}) =>  {
     const navigate = useNavigate();
     return( 
         <div className='login'>
@@ -24,7 +24,8 @@ const Login = () =>  {
                         <p>
                             <input type = "submit" value = "Submit" onClick={
                                 () => {
-                                    navigate('/');
+                                    setIsLoggedIn(true);
+                                    navigate('/user/donor');
                                 }
                             }></input>
                             <input type = "reset" value = "Reset"></input>
