@@ -1,14 +1,36 @@
 import './WelcomePageDonor.css'
 import {Link} from 'react-router-dom'
-
+import {FaSearch} from 'react-icons/fa'
+import {IoCreateOutline} from 'react-icons/io5'
+import {BiLogOut} from 'react-icons/bi'
 const WelcomePageDonor = () =>  {
     return ( 
     <div className='donor-container'>
         <div className='sidebar'>
-            <Link to="/user/donor/searchcamps" className="row">Search Blood Bank Camp</Link>
-            <Link to="/user/donor/createcamps" className="row">Create Blood Bank Camp</Link>
-            <Link to="/user/donor/searchrequest" className="row">Search Blood Request</Link>
-            <button className="button-row">Logout</button>
+            <Link to="/user/donor/searchcamps" className="row">
+                <div className='sbdico'>
+                    <FaSearch/>
+                </div>
+                Search Blood Bank Camp
+            </Link>
+            <Link to="/user/donor/createcamps" className="row">
+                <div className='sbdico'>
+                    <IoCreateOutline/>
+                </div>
+                Create Blood Bank Camp
+            </Link>
+            <Link to="/user/donor/searchrequest" className="row">
+                <div className='sbdico'>
+                    <FaSearch/>
+                </div>
+                Search Blood Request
+            </Link>
+            <button className="button-row">
+                <div className='sbdico'>
+                    <BiLogOut/>
+                </div>
+                Logout
+            </button>
         </div>
         <div className='content'>
             <p>Why we need you to give Blood?</p>

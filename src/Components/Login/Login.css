@@ -56,6 +56,16 @@
     border-radius: 5px;
 }
 
+.login-card .radio{
+    font-size: 1.2rem;
+    padding: 1.5%;
+}
+
+.login-card input[type="radio"]{
+    position: relative;
+    left: 10%;
+}
+
 .login-card input[type="submit"]{
     border: 2px solid #53c73e;
     outline: none;

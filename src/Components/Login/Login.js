@@ -10,6 +10,14 @@ const Login = ({setIsLoggedIn}) =>  {
                 <div className='login-card'>
                     <form name= "login-form" method= "POST">
                         <p>
+                            <label htmlFor= "acnt">Account Type:</label><br/> 
+                            <input type="radio" name="acnt" value="Donor"/>
+                            <label htmlFor="Donor" className="radio">Donor</label><br/>
+                            <input type="radio" name="acnt" value="Patient"/>
+                            <label htmlFor="Patient" className="radio">Patient</label><br/>     
+                        </p>
+                        
+                        <p>
                             <label htmlFor="uname">Username: 
                                 <input type= "text" id="uname"/>
                             </label>

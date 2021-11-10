@@ -18,6 +18,10 @@
     transform: translate(-20%);
 }
 
+.sbdico{
+    font-size: 1.4rem;
+}
+
 .donor-container .sidebar .row {
     padding: 12px 5%;
     color: black;

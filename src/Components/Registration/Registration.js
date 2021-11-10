@@ -10,6 +10,13 @@ const Registration = () =>  {
             <div className='reg-card'>
                 <form name= "reg-form" method= "POST">
                     <p>
+                        <label htmlFor= "acnt">Account Type:</label><br/> 
+                        <input type="radio" name="acnt" value="Donor"/>
+                        <label htmlFor="Donor" className="radio">Donor</label><br/>
+                        <input type="radio" name="acnt" value="Patient"/>
+                        <label htmlFor="Patient" className="radio">Patient</label><br/>     
+                    </p>
+                    <p>
                         <label htmlFor="name">Name: 
                             <input type= "text" id="name"/>
                         </label>
