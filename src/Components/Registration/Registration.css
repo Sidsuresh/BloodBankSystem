@@ -30,7 +30,7 @@
     width: 200px;
 }
 
-.reg-card .radio{
+.reg-card .radio {
     font-size: 1.1rem;
     padding: 1.5%;
 }
@@ -42,7 +42,7 @@
     width: 150px;
     height: 15px;
     font-size: large;
-    border-color: lightgray;
+    border: 2px solid lightgray;
     border-radius: 5px;
 }
 
@@ -53,18 +53,18 @@
     width: 150px;
     height: 15px;
     font-size: large;
-    border-color: lightgray;
+    border: 2px solid lightgray;
     border-radius: 5px;
 }
 
-.reg-card input[type="date"]{
+.reg-card input[type="date"] {
     position: absolute;
     padding: 4px 8px;
     left: 50%;
     width: 150px;
     height: 15px;
     font-size: large;
-    border-color: lightgray;
+    border: 2px solid lightgray;
     border-radius: 5px;
 }
 

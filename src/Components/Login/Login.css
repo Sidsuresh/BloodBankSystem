@@ -39,7 +39,7 @@
     width: 150px;
     height: 15px;
     font-size: large;
-    border-color: lightgray;
+    border: 2px solid lightgray;
     transform: translate(45%);
     border-radius: 5px;
 }
@@ -51,7 +51,7 @@
     width: 150px;
     height: 15px;
     font-size: large;
-    border-color: lightgray;
+    border: 2px solid lightgray;
     transform: translate(48%);
     border-radius: 5px;
 }

@@ -1,8 +1,11 @@
 import './Login.css'
 import {useNavigate} from 'react-router-dom'
 
-const Login = ({setIsLoggedIn}) =>  {
+const Login = ({setIsLoggedIn, accountType, setAccountType}) =>  {
     const navigate = useNavigate();
+    const handleAccountChange = (e) => {
+        setAccountType(e.target.value)
+    }
     return( 
         <div className='login'>
             <h1>Log In</h1>
@@ -11,9 +14,21 @@ const Login = ({setIsLoggedIn}) =>  {
                     <form name= "login-form" method= "POST">
                         <p>
                             <label htmlFor= "acnt">Account Type:</label><br/> 
-                            <input type="radio" name="acnt" value="Donor"/>
+                            <input 
+                                type="radio" 
+                                name="acnt" 
+                                value="Donor" 
+                                checked={accountType === 'Donor'} 
+                                onChange={handleAccountChange}
+                            />
                             <label htmlFor="Donor" className="radio">Donor</label><br/>
-                            <input type="radio" name="acnt" value="Patient"/>
+                            <input 
+                                type="radio" 
+                                name="acnt" 
+                                value="Patient"
+                                checked={accountType === 'Patient'} 
+                                onChange={handleAccountChange}                         
+                            />
                             <label htmlFor="Patient" className="radio">Patient</label><br/>     
                         </p>
                         
@@ -32,8 +47,12 @@ const Login = ({setIsLoggedIn}) =>  {
                         <p>
                             <input type = "submit" value = "Login" onClick= {
                                 () => {
-                                    setIsLoggedIn(true);
-                                    navigate('/user/donor');
+                                    if (accountType === 'Donor') {
+                                        setIsLoggedIn(true);
+                                        navigate('/user/donor');
+                                    } else {
+                                        navigate('/');
+                                    }
                                 }
                             }></input>
                             <input type = "reset" value = "Reset"></input>

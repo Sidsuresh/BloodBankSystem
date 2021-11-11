@@ -9,6 +9,7 @@ import { useState } from 'react';
 
 function App() {
   const[isLoggedIn, setIsLoggedIn] = useState(false);
+  const[accountType, setAccountType] = useState('');
   return (
     <Router>
       <div className="App">
@@ -16,7 +17,7 @@ function App() {
         <Routes>
           <Route path="/" element={<LandingPage/>}/>
           <Route path="/signup" element={<Registration />}/>
-          <Route path="/login" element={<Login setIsLoggedIn={setIsLoggedIn} />}/>
+          <Route path="/login" element={<Login setIsLoggedIn={setIsLoggedIn} accountType={accountType} setAccountType={setAccountType} />}/>
           {/* <Route path="/users" element={isLoggedIn ? <Home />:<LandingPage/>}></Route> */}
           <Route path="/user/donor" element={isLoggedIn ? <WelcomePageDonor setIsLoggedIn={setIsLoggedIn} />:<LandingPage />}></Route>
         </Routes>
