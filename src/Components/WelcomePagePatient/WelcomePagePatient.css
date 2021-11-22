@@ -1,0 +1,65 @@
+.pat-container {
+    display: flex;
+    margin-top: 3%;
+    justify-content: space-evenly;
+    flex-direction: row;
+}
+
+
+.pat-container .sidebar {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: #f1d4d4;
+    width: 25%;
+    height: 75vh;
+    border-radius: 25px;
+    box-shadow: 0 0px 20px rgba(22, 42, 107, 0.4);
+    transform: translate(-20%);
+}
+
+.sbdico{
+    font-size: 1.4rem;
+}
+
+.pat-container .sidebar .row {
+    padding: 12px 5%;
+    color: black;
+    display: block;
+    font-size: 1.2rem;
+}
+
+.pat-container .sidebar .button-row {
+    padding: 12px 5%;
+    /* background-color: #8A0303; */
+    background-color: #f1d4d4;
+    color: black;
+    display: block;
+    width: 100%;
+    font-size: 1.2rem;
+    border: none;
+    cursor: pointer;
+    transform: translate(0%, 150%);
+}
+
+.pat-container .sidebar .row:hover, .pat-container .sidebar .button-row:hover{
+    font-weight: bold;
+    background-color: #8A0303;
+    color: white;
+}
+
+.pat-container .content {
+    text-align: left;
+    width: 50%;
+    margin-left: 2%;
+}
+
+.pat-container .content p {
+    color: #8A0303;
+    font-size: 1.5rem;
+}
+
+.pat-container .content li {
+    font-size: 1.2rem;
+    padding: 0.5%;
+}

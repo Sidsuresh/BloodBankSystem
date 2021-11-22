@@ -48,7 +48,8 @@ const Login = ({setIsLoggedIn, accountType, setAccountType}) =>  {
                                     setIsLoggedIn(true);
                                     navigate('/user/donor');
                                 } else {
-                                    navigate('/');
+                                    setIsLoggedIn(true);
+                                    navigate('/user/patient');
                                 }
                             }
                         }></input>
