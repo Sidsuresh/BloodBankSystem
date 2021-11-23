@@ -1,10 +1,32 @@
 import './Login.css'
 import {useNavigate} from 'react-router-dom'
+import useForm from '../useForm';
 
 const Login = ({setIsLoggedIn, accountType, setAccountType}) =>  {
     const navigate = useNavigate();
+    const onSubmit = () => {
+        alert('User submitted!')
+        if (accountType === 'Donor') {
+            setIsLoggedIn(true);
+            navigate('/user/donor');
+        } else if (accountType === 'Patient') {
+            setIsLoggedIn(true);
+            navigate('/user/patient');
+        } else {
+            setIsLoggedIn(true);
+            navigate('/user/admin');                                    
+        }
+    }
+    const {data, handleChange, handleSubmit} = useForm({
+        onSubmit: onSubmit,
+        initialValues: { // used to initialize the data
+          acnt: accountType,
+        },
+      });
+
     const handleAccountChange = (e) => {
         setAccountType(e.target.value)
+        handleChange(e)
     }
     return( 
         <div className='login'>
@@ -16,6 +38,7 @@ const Login = ({setIsLoggedIn, accountType, setAccountType}) =>  {
                         <input 
                             type="radio" 
                             name="acnt" 
+                            id="Donor"
                             value="Donor" 
                             checked={accountType === 'Donor'} 
                             onChange={handleAccountChange}
@@ -23,7 +46,8 @@ const Login = ({setIsLoggedIn, accountType, setAccountType}) =>  {
                         <label htmlFor="Donor" className="radio">Donor</label><br/>
                         <input 
                             type="radio" 
-                            name="acnt" 
+                            name="acnt"
+                            id="Patient"
                             value="Patient"
                             checked={accountType === 'Patient'} 
                             onChange={handleAccountChange}                         
@@ -31,7 +55,8 @@ const Login = ({setIsLoggedIn, accountType, setAccountType}) =>  {
                         <label htmlFor="Patient" className="radio">Patient</label><br/> 
                         <input 
                             type="radio" 
-                            name="acnt" 
+                            name="acnt"
+                            id="Admin"
                             value="Admin"
                             checked={accountType === 'Admin'} 
                             onChange={handleAccountChange}                         
@@ -41,29 +66,16 @@ const Login = ({setIsLoggedIn, accountType, setAccountType}) =>  {
                     
                     <div>
                         <label htmlFor="uname">Username:</label>
-                        <input type= "text" id="uname"/>
+                        <input type= "text" id="uname" name="uname" onChange={handleChange} />
                     </div>
 
                     <div>
                         <label htmlFor="pwd">Password:</label>
-                        <input type= "password" id="pwd"/>
+                        <input type= "password" id="pwd" name="pwd" onChange={handleChange}/>
                     </div>
 
                     <div className="button-wrap">
-                        <input type = "submit" value = "Login" onClick= {
-                            () => {
-                                if (accountType === 'Donor') {
-                                    setIsLoggedIn(true);
-                                    navigate('/user/donor');
-                                } else if (accountType === 'Patient') {
-                                    setIsLoggedIn(true);
-                                    navigate('/user/patient');
-                                } else {
-                                    setIsLoggedIn(true);
-                                    navigate('/user/admin');                                    
-                                }
-                            }
-                        }></input>
+                        <input type = "submit" value = "Login" onClick= {handleSubmit}></input>
                         <input type = "reset" value = "Reset"></input>
                     </div>
                 </form>   

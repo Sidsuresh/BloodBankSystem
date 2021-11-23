@@ -12,7 +12,7 @@
     justify-content: center;
     background-color: #f1d4d4;
     width: 25%;
-    height: 75vh;
+    min-height: 75vh;
     border-radius: 25px;
     box-shadow: 0 0px 20px rgba(22, 42, 107, 0.4);
     transform: translate(-20%);
@@ -35,11 +35,13 @@
     background-color: #f1d4d4;
     color: black;
     display: block;
+    position: relative;
+    top: 10%;
     width: 100%;
     font-size: 1.2rem;
     border: none;
     cursor: pointer;
-    transform: translate(0%, 150%);
+    /* transform: translate(0%, 150%); */
 }
 
 .donor-container .sidebar .row:hover, .donor-container .sidebar .button-row:hover{
