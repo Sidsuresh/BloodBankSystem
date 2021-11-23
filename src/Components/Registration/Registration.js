@@ -65,7 +65,7 @@ const Registration = () =>  {
 
                 <div>
                     <label id="addr_label" htmlFor="add">Address:</label>
-                    <textarea rows= "4" cols= "25" type= "text" id="add"/>
+                    <textarea rows= "4" cols= "20" type= "text" id="add"/>
                 </div>
                 <div className="check-box">
                     <input type="checkbox" id="agree" name="agree" value="Yes" />

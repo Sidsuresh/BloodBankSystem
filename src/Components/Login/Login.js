@@ -28,7 +28,15 @@ const Login = ({setIsLoggedIn, accountType, setAccountType}) =>  {
                             checked={accountType === 'Patient'} 
                             onChange={handleAccountChange}                         
                         />
-                        <label htmlFor="Patient" className="radio">Patient</label><br/>     
+                        <label htmlFor="Patient" className="radio">Patient</label><br/> 
+                        <input 
+                            type="radio" 
+                            name="acnt" 
+                            value="Admin"
+                            checked={accountType === 'Admin'} 
+                            onChange={handleAccountChange}                         
+                        />
+                        <label htmlFor="Admin" className="radio">Admin</label><br/>  
                     </div>
                     
                     <div>
@@ -47,9 +55,12 @@ const Login = ({setIsLoggedIn, accountType, setAccountType}) =>  {
                                 if (accountType === 'Donor') {
                                     setIsLoggedIn(true);
                                     navigate('/user/donor');
-                                } else {
+                                } else if (accountType === 'Patient') {
                                     setIsLoggedIn(true);
                                     navigate('/user/patient');
+                                } else {
+                                    setIsLoggedIn(true);
+                                    navigate('/user/admin');                                    
                                 }
                             }
                         }></input>
