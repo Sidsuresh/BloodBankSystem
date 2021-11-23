@@ -5,7 +5,7 @@ import useForm from '../useForm';
 const Login = ({setIsLoggedIn, accountType, setAccountType}) =>  {
     const navigate = useNavigate();
     const onSubmit = () => {
-        alert('User submitted!')
+        alert('User Logged In!')
         if (accountType === 'Donor') {
             setIsLoggedIn(true);
             navigate('/user/donor');
@@ -17,9 +17,31 @@ const Login = ({setIsLoggedIn, accountType, setAccountType}) =>  {
             navigate('/user/admin');                                    
         }
     }
+    const onError = (err) => {
+        var msg = ""
+        for (const e in err) {
+            msg += err[e] + "\n"
+        }
+        alert(msg)
+    }
     const {data, handleChange, handleSubmit} = useForm({
+        validations: {
+            uname: {
+              pattern: {
+                value: '^$',
+                message: "Username cannot be empty.",
+              },
+            },
+            pwd: {
+                pattern: {
+                  value: '^$',
+                  message: "Password cannot be empty.",
+                },
+              },
+          },
         onSubmit: onSubmit,
-        initialValues: { // used to initialize the data
+        onError: onError,
+        initialValues: {
           acnt: accountType,
         },
       });

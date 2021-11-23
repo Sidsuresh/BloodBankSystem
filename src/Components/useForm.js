@@ -42,6 +42,9 @@ const useForm = (options) =>  {
       
           if (!valid) {
             setErrors(newErrors);
+            if (options?.onError) {
+              options.onError(newErrors);
+            }
             return;
           }
         }
