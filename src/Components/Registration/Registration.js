@@ -1,8 +1,71 @@
 import './Registration.css'
 import {useNavigate} from 'react-router-dom'
+import useForm from '../useForm.js';
 
 const Registration = () =>  {
     const navigate = useNavigate();
+    const onSubmit = () => {
+        navigate('/');
+    }
+    const onError = (err) => {
+        var msg = ""
+        for (const e in err) {
+            msg += err[e] + "\n"
+        }
+        alert(msg)
+    }
+    const {data, handleChange, handleSubmit} = useForm({
+        validations: {
+            name: {
+                pattern: {
+                    value: '^.{1,}$',
+                    message: "Name cannot be empty.",
+                },
+            },
+            phn: {
+                pattern: {
+                    value: '^.{1,}$',
+                    message: "Phone number cannot be empty.",
+                },
+            },
+            email: {
+                pattern: {
+                  value: '^.{1,}$',
+                  message: "Email cannot be empty.",
+                },
+            },
+            pwd: {
+                pattern: {
+                  value: '^.{1,}$',
+                  message: "Password cannot be empty.",
+                },
+            },
+            add: {
+                pattern: {
+                  value: '^.{1,}$',
+                  message: "Address cannot be empty.",
+                },
+              },
+              agree: {
+                pattern: {
+                  value: 'true',
+                  message: "You have to agree to the Terms and Conditions to continue.",
+                },
+            },
+          },
+        onSubmit: onSubmit,
+        onError: onError,
+        initialValues: {
+            acnt: "Donor",
+            name: "",
+            phn: "",
+            email: "",
+            pwd: "",
+            add: "",
+            agree: "false",
+        },
+      });
+
     return( 
     <div className='register'>
         <h1>Registration</h1>
@@ -10,19 +73,34 @@ const Registration = () =>  {
             <form className='reg-card' name= "reg-form" method= "POST">
                 <div className="radio-buttons">
                     <label htmlFor= "acnt">Account Type:</label><br/> 
-                    <input type="radio" name="acnt" value="Donor"/>
+                    <input 
+                        type="radio" 
+                        name="acnt" 
+                        id="Donor"
+                        value="Donor" 
+                        checked={data['acnt'] === 'Donor'} 
+                        onChange={handleChange}
+                    />
                     <label htmlFor="Donor" className="radio">Donor</label><br/>
-                    <input type="radio" name="acnt" value="Patient"/>
-                    <label htmlFor="Patient" className="radio">Patient</label><br/>     
+                    <input 
+                        type="radio" 
+                        name="acnt"
+                        id="Patient"
+                        value="Patient"
+                        checked={data['acnt'] === 'Patient'} 
+                        onChange={handleChange}                         
+                    />
+                    <label htmlFor="Patient" className="radio">Patient</label><br/>   
                 </div>
+
                 <div>
                     <label htmlFor="name">Name:</label>
-                    <input type= "text" id="name"/>
+                    <input type= "text" id="name" name="name" onChange={handleChange}/>
                 </div>
 
                 <div>
                     <label htmlFor="dob">Date of Birth: </label>
-                    <input type= "date" id="dob"/>
+                    <input type= "date" id="dob" name="dob" onChange={handleChange}/>
                 </div>
                 
                 <div className="radio-buttons">
@@ -36,7 +114,7 @@ const Registration = () =>  {
                 </div>
 
                 <div>
-                    <label for="bgp">Blood Group:</label>
+                    <label htmlFor="bgp">Blood Group:</label>
                     <select name="bgp" id="bgp">
                         <option value="A+">A+</option>
                         <option value="A-">A-</option>
@@ -50,33 +128,29 @@ const Registration = () =>  {
                 </div>
                 <div>
                     <label htmlFor="phn">Phone Number:</label>
-                    <input type= "text" id="phn"/>
+                    <input type= "text" id="phn" name="phn" onChange={handleChange}/>
                 </div>
 
                 <div>
                     <label htmlFor="email">Email:</label>
-                    <input type= "text" id="email"/>
+                    <input type= "text" id="email" name="email" onChange={handleChange}/>
                 </div>
 
                 <div>
                     <label htmlFor="pwd">Password:</label>
-                    <input type= "password" id="pwd"/>
+                    <input type= "password" id="pwd" name="pwd" onChange={handleChange}/>
                 </div>
 
                 <div>
                     <label id="addr_label" htmlFor="add">Address:</label>
-                    <textarea rows= "4" cols= "20" type= "text" id="add"/>
+                    <textarea rows= "4" cols= "20" type= "text" id="add" name="add" onChange={handleChange}/>
                 </div>
                 <div className="check-box">
-                    <input type="checkbox" id="agree" name="agree" value="Yes" />
-                    <label for="agree">I agree to the Terms and Conditions</label>
+                    <input type="checkbox" id="agree" name="agree" value="Yes" onChange={(e) => handleChange(e, e.target.checked.toString())} />
+                    <label htmlFor="agree">I agree to the Terms and Conditions</label>
                 </div>
                 <div className="button-wrap">
-                    <input type = "submit" value = "Submit" onClick={
-                        () => {
-                            navigate('/');
-                        }
-                    }></input>
+                    <input type = "submit" value = "Submit" onClick={handleSubmit}></input>
                     <input type = "reset" value = "Reset"></input>
                 </div>
             </form>   

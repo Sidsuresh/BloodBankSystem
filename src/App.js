@@ -12,7 +12,6 @@ import { useState } from 'react';
 
 function App() {
   const[isLoggedIn, setIsLoggedIn] = useState(false);
-  const[accountType, setAccountType] = useState('Donor');
   return (
     <Router>
       <div className="App">
@@ -21,7 +20,7 @@ function App() {
           <Route path="/" element={<LandingPage/>}/>
           <Route path="/contact_us" element={<ContactUs />}/>
           <Route path="/signup" element={<Registration />}/>
-          <Route path="/login" element={<Login setIsLoggedIn={setIsLoggedIn} accountType={accountType} setAccountType={setAccountType} />}/>
+          <Route path="/login" element={<Login setIsLoggedIn={setIsLoggedIn} />}/>
           <Route path="/user/patient" element={isLoggedIn ? <WelcomePagePatient setIsLoggedIn={setIsLoggedIn} />:<LandingPage />}></Route>
           <Route path="/user/donor" element={isLoggedIn ? <WelcomePageDonor setIsLoggedIn={setIsLoggedIn} />:<LandingPage />}></Route>
           <Route path="/user/admin" element={isLoggedIn ? <WelcomePageAdmin setIsLoggedIn={setIsLoggedIn} />:<LandingPage />}></Route>

@@ -2,14 +2,14 @@ import './Login.css'
 import {useNavigate} from 'react-router-dom'
 import useForm from '../useForm';
 
-const Login = ({setIsLoggedIn, accountType, setAccountType}) =>  {
+const Login = ({setIsLoggedIn}) =>  {
     const navigate = useNavigate();
-    const onSubmit = () => {
+    const onSubmit = (data) => {
         alert('User Logged In!')
-        if (accountType === 'Donor') {
+        if (data['acnt'] === 'Donor') {
             setIsLoggedIn(true);
             navigate('/user/donor');
-        } else if (accountType === 'Patient') {
+        } else if (data['acnt'] === 'Patient') {
             setIsLoggedIn(true);
             navigate('/user/patient');
         } else {
@@ -28,13 +28,13 @@ const Login = ({setIsLoggedIn, accountType, setAccountType}) =>  {
         validations: {
             uname: {
               pattern: {
-                value: '^$',
+                value: '^.{1,}$',
                 message: "Username cannot be empty.",
               },
             },
             pwd: {
                 pattern: {
-                  value: '^$',
+                  value: '^.{1,}$',
                   message: "Password cannot be empty.",
                 },
               },
@@ -42,14 +42,13 @@ const Login = ({setIsLoggedIn, accountType, setAccountType}) =>  {
         onSubmit: onSubmit,
         onError: onError,
         initialValues: {
-          acnt: accountType,
+            uname: "",
+            pwd: "",
+            acnt: "Donor",
         },
+        passData: true,
       });
 
-    const handleAccountChange = (e) => {
-        setAccountType(e.target.value)
-        handleChange(e)
-    }
     return( 
         <div className='login'>
             <h1>Log In</h1>
@@ -62,8 +61,8 @@ const Login = ({setIsLoggedIn, accountType, setAccountType}) =>  {
                             name="acnt" 
                             id="Donor"
                             value="Donor" 
-                            checked={accountType === 'Donor'} 
-                            onChange={handleAccountChange}
+                            checked={data['acnt'] === 'Donor'} 
+                            onChange={handleChange}
                         />
                         <label htmlFor="Donor" className="radio">Donor</label><br/>
                         <input 
@@ -71,8 +70,8 @@ const Login = ({setIsLoggedIn, accountType, setAccountType}) =>  {
                             name="acnt"
                             id="Patient"
                             value="Patient"
-                            checked={accountType === 'Patient'} 
-                            onChange={handleAccountChange}                         
+                            checked={data['acnt'] === 'Patient'}
+                            onChange={handleChange}                         
                         />
                         <label htmlFor="Patient" className="radio">Patient</label><br/> 
                         <input 
@@ -80,8 +79,8 @@ const Login = ({setIsLoggedIn, accountType, setAccountType}) =>  {
                             name="acnt"
                             id="Admin"
                             value="Admin"
-                            checked={accountType === 'Admin'} 
-                            onChange={handleAccountChange}                         
+                            checked={data['acnt'] === 'Admin'} 
+                            onChange={handleChange}                         
                         />
                         <label htmlFor="Admin" className="radio">Admin</label><br/>  
                     </div>

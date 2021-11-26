@@ -4,9 +4,9 @@ const useForm = (options) =>  {
     const [data, setData] = useState((options?.initialValues || {}));
     const [errors, setErrors] = useState({});
 
-    const handleChange = (e) => {
+    const handleChange = (e, val) => {
         const key = e.target.name;
-        const value = e.target.value;
+        const value = val ? val: e.target.value;
         setData({
           ...data,
           [key]: value,
@@ -52,7 +52,11 @@ const useForm = (options) =>  {
         setErrors({});
       
         if (options?.onSubmit) {
-          options.onSubmit();
+          if (options?.passData) {
+              options.onSubmit(data);
+          } else {
+            options.onSubmit();
+          }
         }
       };
     
