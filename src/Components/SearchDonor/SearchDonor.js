@@ -62,6 +62,11 @@ const SearchDonor = ({ setIsLoggedIn }) => {
                             <td>Tobias</td>
                             <td>Linus</td>
                         </tr>
+                        <tr>
+                            <td>Emil</td>
+                            <td>Tobias</td>
+                            <td>Linus</td>
+                        </tr>
                     </table>
                 </div>
             </div>
