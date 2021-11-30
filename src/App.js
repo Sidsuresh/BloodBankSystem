@@ -7,6 +7,7 @@ import ContactUs from './Components/ContactUs/ContactUs.js';
 import WelcomePageDonor from './Components/WelcomePageDonor/WelcomePageDonor.js';
 import WelcomePagePatient from './Components/WelcomePagePatient/WelcomePagePatient.js';
 import WelcomePageAdmin from './Components/WelcomePageAdmin/WelcomePageAdmin.js';
+import SearchDonor from './Components/SearchDonor/SearchDonor.js';
 import { BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 import { useState } from 'react';
 
@@ -24,6 +25,7 @@ function App() {
           <Route path="/user/patient" element={isLoggedIn ? <WelcomePagePatient setIsLoggedIn={setIsLoggedIn} />:<LandingPage />}></Route>
           <Route path="/user/donor" element={isLoggedIn ? <WelcomePageDonor setIsLoggedIn={setIsLoggedIn} />:<LandingPage />}></Route>
           <Route path="/user/admin" element={isLoggedIn ? <WelcomePageAdmin setIsLoggedIn={setIsLoggedIn} />:<LandingPage />}></Route>
+          <Route path="/user/patient/donor" element={isLoggedIn ? <SearchDonor setIsLoggedIn={setIsLoggedIn} />:<LandingPage />}></Route>
         </Routes>
       </div>
     </Router>
