@@ -1,10 +1,23 @@
 import './Registration.css'
 import {useNavigate} from 'react-router-dom'
 import useForm from '../useForm.js';
+import { ref, set } from "firebase/database";
+import db from '../../firebase-config.js';
 
 const Registration = () =>  {
     const navigate = useNavigate();
-    const onSubmit = () => {
+
+    const onSubmit = (data) => {
+        // db.ref('users').set()
+        set(ref(db, 'users/' + data['uname']), {
+            name: data['name'],
+            email: data['email'],
+            acnt: data['acnt'],
+            pwd: data['pwd'],
+            phn: data['phn'],
+            add: data['add']
+        });
+        alert("Successfully Added");
         navigate('/');
     }
     const onError = (err) => {
@@ -16,6 +29,12 @@ const Registration = () =>  {
     }
     const {data, handleChange, handleSubmit} = useForm({
         validations: {
+            uname: {
+                pattern: {
+                    value: '^.{1,}$',
+                    message: "Name cannot be empty.",
+                },
+            },
             name: {
                 pattern: {
                     value: '^.{1,}$',
@@ -57,6 +76,7 @@ const Registration = () =>  {
         onError: onError,
         initialValues: {
             acnt: "Donor",
+            uname: "",
             name: "",
             phn: "",
             email: "",
@@ -64,6 +84,7 @@ const Registration = () =>  {
             add: "",
             agree: "false",
         },
+        passData: true,
       });
 
     return( 
@@ -129,6 +150,11 @@ const Registration = () =>  {
                 <div>
                     <label htmlFor="phn">Phone Number:</label>
                     <input type= "text" id="phn" name="phn" onChange={handleChange}/>
+                </div>
+
+                <div>
+                    <label htmlFor="uname">Username:</label>
+                    <input type= "text" id="uname" name="uname" onChange={handleChange}/>
                 </div>
 
                 <div>

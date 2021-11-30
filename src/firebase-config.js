@@ -8,7 +8,8 @@ const firebaseConfig = {
     storageBucket: "sage-2c17a.appspot.com",
     messagingSenderId: "126634898925",
     appId: "1:126634898925:web:3ad2fdc664226705bfa3e4",
-    measurementId: "G-EKLQGK95ZZ"
+    measurementId: "G-EKLQGK95ZZ",
+    databaseURL: "https://sage-2c17a-default-rtdb.asia-southeast1.firebasedatabase.app/",
 };
 
 // Initialize Firebase
