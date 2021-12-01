@@ -2,22 +2,40 @@ import './Login.css'
 import {useNavigate} from 'react-router-dom'
 import useForm from '../useForm';
 
+import db from '../../firebase-config'
+import { ref, child, get } from "firebase/database";
+
 const Login = ({setIsLoggedIn, setUsername, setAccType}) =>  {
     const navigate = useNavigate();
     const onSubmit = (data) => {
-        alert('User Logged In!')
-        setUsername(data['uname']);
-        setAccType(data['acnt']);
-        if (data['acnt'] === 'Donor') {
-            setIsLoggedIn(true);
-            navigate('/user/donor');
-        } else if (data['acnt'] === 'Patient') {
-            setIsLoggedIn(true);
-            navigate('/user/patient');
-        } else {
-            setIsLoggedIn(true);
-            navigate('/user/admin');                                    
-        }
+        const dbRef = ref(db);
+        get(child(dbRef, "users/"+ data['uname'])).then((snapshot) => {
+            if (snapshot.exists()) {
+                console.log(snapshot.val());
+                var user_data = snapshot.val();
+                if (user_data['pwd'] === data['pwd'] && user_data['acnt'] === data['acnt']) {
+                    alert('User Logged In!')
+                    setUsername(data['uname']);
+                    setAccType(data['acnt']);
+                    if (data['acnt'] === 'Donor') {
+                        setIsLoggedIn(true);
+                        navigate('/user/donor');
+                    } else if (data['acnt'] === 'Patient') {
+                        setIsLoggedIn(true);
+                        navigate('/user/patient');
+                    } else {
+                        setIsLoggedIn(true);
+                        navigate('/user/admin');                                    
+                    }
+                } else {
+                    alert('Username, account type or password not correct !!!');
+                }
+            } else {
+                alert('Username doesn\'t exist !!!');
+            }
+        }).catch((error) => {
+            console.error(error);
+        });
     }
     const onError = (err) => {
         var msg = ""

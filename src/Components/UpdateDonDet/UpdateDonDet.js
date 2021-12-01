@@ -8,7 +8,7 @@ import { BiLogOut } from 'react-icons/bi'
 
 import useForm from '../useForm.js'
 import db from '../../firebase-config'
-import { ref, update, push, child } from "firebase/database";
+import { ref, update } from "firebase/database";
 
 
 const UpdateDonDet = ({ setIsLoggedIn, username }) => {
@@ -23,12 +23,8 @@ const UpdateDonDet = ({ setIsLoggedIn, username }) => {
         const date2 = new Date(data['dld']);
         const diffInMs = Math.abs(date2 - date1);
         const days = Math.floor(diffInMs / (1000 * 60 * 60 * 24));
-        var updateData = {};
         if (days < 90) {
             data['status'] =  "Not Eligible";
-            // const updateData = {
-            //     status:,
-            // };
         } else {
             data['status'] =  "Eligible";
         }
