@@ -29,10 +29,9 @@ const CheckBloodType = ({ setIsLoggedIn }) => {
 
     const readData = () => {
         const dbRef = ref(db);
-        var data = []
         get(child(dbRef, "bloodbank/")).then((snapshot) => {
+            var data = []
             if (snapshot.exists()) {
-                console.log(snapshot.val());
                 snapshot.forEach((childSnapshot) => {
                     var childKey = childSnapshot.key;
                     var childData = childSnapshot.val();
@@ -40,8 +39,6 @@ const CheckBloodType = ({ setIsLoggedIn }) => {
                         ...data,
                         { [childKey]: childData }
                     ];
-                    console.log(childKey, childData);
-                    console.log(data);
                 });
                 setBloodgrp(data);
             } else {
@@ -69,7 +66,7 @@ const CheckBloodType = ({ setIsLoggedIn }) => {
                     </div>
                     Check Available Blood Types
                 </Link>
-                <Link to="/user/patient/request" className="row">
+                <Link to="/user/patient/status" className="row">
                     <div className='sbdico'>
                         <IoCreateOutline />
                     </div>
@@ -88,7 +85,7 @@ const CheckBloodType = ({ setIsLoggedIn }) => {
                     <table id='sdonor'>
                         <tr>
                             <th>Blood Group</th>
-                            <th>Available Donor</th>
+                            <th>Available Units</th>
                             <th>Request</th>
                         </tr>
                         {
@@ -108,7 +105,7 @@ const CheckBloodType = ({ setIsLoggedIn }) => {
                                 return (
                                     <tr key={k}>
                                         <td>{donor_key}</td>
-                                        <td>{val[donor_key]}</td>
+                                        <td>{val[donor_key]['units'].toString()}</td>
                                         <td>{<input type="submit" name="request" value='Post' onClick={onPost}/>} &emsp;
                                             {<input type="submit" name="request" value='Request' onClick={() => onRequest(id)}/>}</td>
                                     </tr>

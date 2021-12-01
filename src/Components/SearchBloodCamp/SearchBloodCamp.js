@@ -1,5 +1,5 @@
-import '../WelcomePagePatient/WelcomePagePatient.css'
-import './SearchDonor.css'
+import '../WelcomePageAdmin/WelcomePageAdmin.css'
+import './SearchBloodCamp.css'
 import { useNavigate } from 'react-router-dom'
 import useForm from '../useForm'
 import { Link } from 'react-router-dom'
@@ -12,32 +12,32 @@ import { ref, child, get } from "firebase/database";
 import { useState } from 'react'
 
 
-const SearchDonor = ({ setIsLoggedIn }) => {
+const SearchBloodCamp = ({ setIsLoggedIn }) => {
     const navigate = useNavigate();
-    const [donors, setDonors] = useState([]);
+    const [bdCamps, setBdCamps] = useState([]);
     const onLogOut = () => {
         setIsLoggedIn(false);
         navigate('/');
     }
     const onSubmit = (data) => {
         const dbRef = ref(db);
-        var donors = []
-        get(child(dbRef, "users/")).then((snapshot) => {
+        var camps = []
+        get(child(dbRef, "bloodcamp/")).then((snapshot) => {
             if (snapshot.exists()) {
                 console.log(snapshot.val());
                 snapshot.forEach((childSnapshot) => {
                     var childKey = childSnapshot.key;
                     var childData = childSnapshot.val();
-                    if ((childData['bgp'] === data['search_bar']) && (childData['acnt'] === "Donor")) {
+                    if (childData['city'] === data['search_bar']) {
                         console.log(childKey, childData);
-                        donors = [
-                            ...donors,
+                        camps = [
+                            ...camps,
                             { [childKey]: childData }
                         ];
-                        console.log(donors)
+                        console.log(camps)
                     }
                 });
-                setDonors(donors);
+                setBdCamps(camps);
             } else {
                 console.log("No data available");
             }
@@ -56,9 +56,8 @@ const SearchDonor = ({ setIsLoggedIn }) => {
         validations: {
             search_bar: {
                 pattern: {
-                    // value: '^(A+|A-|B+|B-|AB+|AB-|O+|O-)$',
-                    value: '^[ABO][B]?[+-]$',
-                    message: "Search cannot be empty and can only be A+, A-, B+, B-, AB+, AB-, O+, O-.",
+                    value: '^.{1,}$',
+                    message: "Search cannot be empty.",
                 },
             }
         },
@@ -71,25 +70,25 @@ const SearchDonor = ({ setIsLoggedIn }) => {
     });
 
     return (
-        <div className='pat-container'>
+        <div className='donor-container'>
             <div className='sidebar'>
-                <Link to="/user/patient/donor" className="row">
+                <Link to="/user/donor/searchcamp" className="row">
                     <div className='sbdico'>
                         <FaSearch />
                     </div>
-                    Search Donor
+                    Search Blood Bank Camp
                 </Link>
-                <Link to="/user/patient/blood" className="row">
-                    <div className='sbdico'>
-                        <FaSearch />
-                    </div>
-                    Check Available Blood Types
-                </Link>
-                <Link to="/user/patient/status" className="row">
+                <Link to="/user/donor/createcamp" className="row">
                     <div className='sbdico'>
                         <IoCreateOutline />
                     </div>
-                    Request Status
+                    Create Blood Bank Camp
+                </Link>
+                <Link to="/user/donor/viewreqt" className="row">
+                    <div className='sbdico'>
+                        <FaSearch />
+                    </div>
+                    View Blood Request
                 </Link>
                 <button className="button-row" onClick={onLogOut}>
                     <div className='sbdico'>
@@ -100,7 +99,7 @@ const SearchDonor = ({ setIsLoggedIn }) => {
             </div>
             <div className='content'>
                 <div className='searchbar'>
-                    <input type='text' id='search_bar' name='search_bar' placeholder='Search...' onChange={handleChange}></input>
+                    <input type='text' id='search_bar' name='search_bar' placeholder='Search City...' onChange={handleChange}></input>
                     <input type="submit" value="Search" onClick={handleSubmit}></input>
                 </div>
 
@@ -108,19 +107,21 @@ const SearchDonor = ({ setIsLoggedIn }) => {
                     <table id='sdonor'>
                         <tr>
                             <th>Name</th>
-                            <th>Address</th>
-                            <th>Phone No</th>
-                            <th>Email</th>
+                            <th>City</th>
+                            <th>Location</th>
+                            <th>Date</th>
+                            <th>Time</th>
                         </tr>
                         {
-                            donors.map((val, k) => {
-                                var donor_key = Object.keys(val)[0];
+                            bdCamps.map((val, k) => {
+                                var camp_key = Object.keys(val)[0];
                                 return (
                                     <tr key={k}>
-                                        <td>{val[donor_key]['name']}</td>
-                                        <td>{val[donor_key]['add']}</td>
-                                        <td>{val[donor_key]['phn']}</td>
-                                        <td>{val[donor_key]['email']}</td>
+                                        <td>{val[camp_key]['name']}</td>
+                                        <td>{val[camp_key]['city']}</td>
+                                        <td>{val[camp_key]['loc']}</td>
+                                        <td>{val[camp_key]['date']}</td>
+                                        <td>{val[camp_key]['time']}</td>
                                     </tr>
                                 )
                             })
@@ -132,5 +133,5 @@ const SearchDonor = ({ setIsLoggedIn }) => {
     )
 }
 
-export default SearchDonor;
+export default SearchBloodCamp;
 

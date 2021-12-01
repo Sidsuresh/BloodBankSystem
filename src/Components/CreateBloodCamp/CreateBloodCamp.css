@@ -165,9 +165,13 @@
     font-family: Arial, Helvetica, sans-serif;
 }
 
-.content1 .form-card select {
-    font-size: 1rem; 
-    padding: 3px 6px; 
-    margin: 8px 0;
-    border-radius: 5px;
+.content1 .form-card textarea {
+    font-size: 0.96rem;
+    padding: 1.5%;
+}
+
+
+
+#loc_label {
+    vertical-align: top;
 }

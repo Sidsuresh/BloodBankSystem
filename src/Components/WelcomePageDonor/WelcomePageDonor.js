@@ -14,13 +14,13 @@ const WelcomePageDonor = ({setIsLoggedIn}) =>  {
     return ( 
     <div className='donor-container'>
         <div className='sidebar'>
-            <Link to="/user/donor/searchcamps" className="row">
+            <Link to="/user/donor/searchcamp" className="row">
                 <div className='sbdico'>
                     <FaSearch/>
                 </div>
                 Search Blood Bank Camp
             </Link>
-            <Link to="/user/donor/createcamps" className="row">
+            <Link to="/user/donor/createcamp" className="row">
                 <div className='sbdico'>
                     <IoCreateOutline/>
                 </div>
@@ -30,7 +30,7 @@ const WelcomePageDonor = ({setIsLoggedIn}) =>  {
                 <div className='sbdico'>
                     <FaSearch/>
                 </div>
-                Search Blood Request
+                View Blood Request
             </Link>
             <button className="button-row" onClick={onLogOut}>
                 <div className='sbdico'>

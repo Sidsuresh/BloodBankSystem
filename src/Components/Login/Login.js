@@ -2,10 +2,12 @@ import './Login.css'
 import {useNavigate} from 'react-router-dom'
 import useForm from '../useForm';
 
-const Login = ({setIsLoggedIn}) =>  {
+const Login = ({setIsLoggedIn, setUsername, setAccType}) =>  {
     const navigate = useNavigate();
     const onSubmit = (data) => {
         alert('User Logged In!')
+        setUsername(data['uname']);
+        setAccType(data['acnt']);
         if (data['acnt'] === 'Donor') {
             setIsLoggedIn(true);
             navigate('/user/donor');
