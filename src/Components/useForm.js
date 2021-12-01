@@ -11,6 +11,7 @@ const useForm = (options) =>  {
           ...data,
           [key]: value,
         });
+        console.log(data);
       };
 
       const handleSubmit = async (e) => {

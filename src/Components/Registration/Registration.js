@@ -15,7 +15,8 @@ const Registration = () =>  {
             acnt: data['acnt'],
             pwd: data['pwd'],
             phn: data['phn'],
-            add: data['add']
+            add: data['add'],
+            bgp: data['bgp']
         });
         alert("Successfully Added");
         navigate('/');
@@ -82,6 +83,7 @@ const Registration = () =>  {
             email: "",
             pwd: "",
             add: "",
+            bgp: "A+",
             agree: "false",
         },
         passData: true,
@@ -136,7 +138,7 @@ const Registration = () =>  {
 
                 <div>
                     <label htmlFor="bgp">Blood Group:</label>
-                    <select name="bgp" id="bgp">
+                    <select name="bgp" id="bgp" onChange={handleChange}>
                         <option value="A+">A+</option>
                         <option value="A-">A-</option>
                         <option value="B+">B+</option>
