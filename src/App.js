@@ -17,6 +17,7 @@ import RequestStatus from './Components/RequestStatus/RequestStatus.js';
 import CreateBloodCamp from './Components/CreateBloodCamp/CreateBloodCamp';
 import SearchBloodCamp from './Components/SearchBloodCamp/SearchBloodCamp';
 import ViewBloodRequest from './Components/ViewBloodRequest/ViewBloodRequest';
+import UpdateDonDet from './Components/UpdateDonDet/UpdateDonDet';
 import { BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 import { useState } from 'react';
 
@@ -61,6 +62,7 @@ function App() {
           <Route path='/user/donor/createcamp' element={isLoggedIn ? <CreateBloodCamp setIsLoggedIn={setIsLoggedIn} />:<LandingPage />}></Route>
           <Route path='/user/donor/searchcamp' element={isLoggedIn ? <SearchBloodCamp setIsLoggedIn={setIsLoggedIn} />:<LandingPage />}></Route>
           <Route path='/user/donor/viewreqt' element={isLoggedIn ? <ViewBloodRequest setIsLoggedIn={setIsLoggedIn} />:<LandingPage />}></Route>
+          <Route path='/user/donor/updateDet' element={isLoggedIn ? <UpdateDonDet setIsLoggedIn={setIsLoggedIn} username={username} />:<LandingPage />}></Route>
           </Routes>
       </div>
     </Router>

@@ -105,6 +105,7 @@ const SearchDonorAdmin = ({ setIsLoggedIn }) => {
                             <th>Address</th>
                             <th>Phone No</th>
                             <th>Email</th>
+                            <th>Status</th>
                         </tr>
                         {
                             donors.map((val, k) => {
@@ -115,6 +116,7 @@ const SearchDonorAdmin = ({ setIsLoggedIn }) => {
                                         <td>{val[donor_key]['add']}</td>
                                         <td>{val[donor_key]['phn']}</td>
                                         <td>{val[donor_key]['email']}</td>
+                                        <td>{val[donor_key]['status']}</td>
                                     </tr>
                                 )
                             })

@@ -38,6 +38,9 @@ const SearchBloodCamp = ({ setIsLoggedIn }) => {
                     }
                 });
                 setBdCamps(camps);
+                if (camps.length === 0) {
+                    alert("No Blood Bank Camps in the city !!!")
+                }
             } else {
                 console.log("No data available");
             }
@@ -89,6 +92,12 @@ const SearchBloodCamp = ({ setIsLoggedIn }) => {
                         <FaSearch />
                     </div>
                     View Blood Request
+                </Link>
+                <Link to="/user/donor/updateDet" className="row">
+                    <div className='sbdico'>
+                        <IoCreateOutline />
+                    </div>
+                    Update Donation Details
                 </Link>
                 <button className="button-row" onClick={onLogOut}>
                     <div className='sbdico'>

@@ -1,5 +1,5 @@
 import '../WelcomePageDonor/WelcomePageDonor.css'
-import './CreateBloodCamp.css'
+import './UpdateDonDet.css'
 import { useNavigate } from 'react-router-dom'
 import { Link } from 'react-router-dom'
 import { FaSearch } from 'react-icons/fa'
@@ -8,20 +8,32 @@ import { BiLogOut } from 'react-icons/bi'
 
 import useForm from '../useForm.js'
 import db from '../../firebase-config'
-import { ref, set, push, child } from "firebase/database";
+import { ref, update, push, child } from "firebase/database";
 
 
-const CreateBloodCamp = ({ setIsLoggedIn }) => {
+const UpdateDonDet = ({ setIsLoggedIn, username }) => {
     const navigate = useNavigate();
     const onLogOut = () => {
         setIsLoggedIn(false);
         navigate('/');
     }
 
-    const onSubmit = (data) => {
-        const newPostKey = push(child(ref(db), 'bloodcamp')).key;
-        set(ref(db, 'bloodcamp/' + newPostKey), data);
-        alert("Successfully Added");
+    const onSubmit = (data, uname) => {
+        const date1 = Date.now();
+        const date2 = new Date(data['dld']);
+        const diffInMs = Math.abs(date2 - date1);
+        const days = Math.floor(diffInMs / (1000 * 60 * 60 * 24));
+        var updateData = {};
+        if (days < 90) {
+            data['status'] =  "Not Eligible";
+            // const updateData = {
+            //     status:,
+            // };
+        } else {
+            data['status'] =  "Eligible";
+        }
+        update(ref(db, 'users/' + uname), data);
+        alert("Successfully Updated");
         navigate('/user/donor');
     }
     const onError = (err) => {
@@ -33,46 +45,18 @@ const CreateBloodCamp = ({ setIsLoggedIn }) => {
     }
     const { handleChange, handleSubmit } = useForm({
         validations: {
-            name: {
+            dld: {
                 pattern: {
                     value: '^.{1,}$',
                     message: "Username cannot be empty.",
                 },
-            },
-            city: {
-                pattern: {
-                    value: '^.{1,}$',
-                    message: "City cannot be empty.",
-                },
-            },
-            loc: {
-                pattern: {
-                    value: '^.{1,}$',
-                    message: "Location cannot be empty.",
-                },
-            },
-            date: {
-                pattern: {
-                    value: '^.{1,}$',
-                    message: "Date cannot be empty.",
-                },
-            },
-            time: {
-                pattern: {
-                    value: '^.{1,}$',
-                    message: "Time cannot be empty.",
-                },
-            },
+            }
         },
-        onSubmit: onSubmit,
+        onSubmit: (data) => onSubmit(data, username),
         onError: onError,
         initialValues: {
-            name: "",
-            city: "",
-            loc: "",
-            date: "",
-            time: "",
-            status: "Pending",
+            dld: "",
+            status: "Eligible",
         },
         passData: true,
     });
@@ -111,32 +95,15 @@ const CreateBloodCamp = ({ setIsLoggedIn }) => {
                     Logout
                 </button>
             </div>
-            <div className='content1'>
+            <div className='content2'>
                 <form className='form-card' name="post-form" method="POST">
-                    {/* date, city, time, name, location */}
                     <div>
-                        <label htmlFor="name">Name: </label>
-                        <input type="text" id="name" name="name" onChange={handleChange} />
-                    </div>
-                    <div>
-                        <label htmlFor="city">City: </label>
-                        <input type="text" id="city" name="city" onChange={handleChange} />
-                    </div>
-                    <div>
-                        <label id="loc_label" htmlFor="loc">Location:</label>
-                        <textarea rows="4" cols="20" type="text" id="loc" name="loc" onChange={handleChange} />
-                    </div>
-                    <div>
-                        <label htmlFor="date">Date: </label>
-                        <input type="date" id="date" name="date" onChange={handleChange} />
-                    </div>
-                    <div>
-                        <label htmlFor="time">Time: </label>
-                        <input type="time" id="time" name="time" onChange={handleChange} />
+                        <label htmlFor="dld">Date of Last Donation: </label>
+                        <input type="date" id="dld" name="dld" onChange={handleChange} />
                     </div>
 
                     <div className="button-wrap">
-                        <input type="submit" value="Create" onClick={handleSubmit}></input>
+                        <input type="submit" value="Update" onClick={handleSubmit}></input>
                         <input type="reset" value="Reset"></input>
                     </div>
                 </form>
@@ -145,5 +112,5 @@ const CreateBloodCamp = ({ setIsLoggedIn }) => {
     )
 }
 
-export default CreateBloodCamp;
+export default UpdateDonDet;
 

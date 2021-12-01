@@ -67,6 +67,12 @@ const ViewBloodRequest = ({ setIsLoggedIn }) => {
                     </div>
                     View Blood Request
                 </Link>
+                <Link to="/user/donor/updateDet" className="row">
+                    <div className='sbdico'>
+                        <IoCreateOutline />
+                    </div>
+                    Update Donation Details
+                </Link>
                 <button className="button-row" onClick={onLogOut}>
                     <div className='sbdico'>
                         <BiLogOut />
@@ -78,7 +84,7 @@ const ViewBloodRequest = ({ setIsLoggedIn }) => {
                 <div className='sdtable'>
                     <table id='sdonor'>
                         <tr>
-                            <th>Username</th>
+                            <th>Email</th>
                             <th>Blood Group</th>
                             <th>Units</th>
                         </tr>
@@ -87,7 +93,7 @@ const ViewBloodRequest = ({ setIsLoggedIn }) => {
                                 var post_key = Object.keys(val)[0];
                                 return (
                                     <tr key={k}>
-                                        <td>{val[post_key]['uname']}</td>
+                                        <td>{val[post_key]['email']}</td>
                                         <td>{val[post_key]['bgp']}</td>
                                         <td>{val[post_key]['units']}</td>
                                     </tr>

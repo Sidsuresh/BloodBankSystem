@@ -100,7 +100,7 @@ const SearchDonor = ({ setIsLoggedIn }) => {
             </div>
             <div className='content'>
                 <div className='searchbar'>
-                    <input type='text' id='search_bar' name='search_bar' placeholder='Search...' onChange={handleChange}></input>
+                    <input type='text' id='search_bar' name='search_bar' placeholder='Search blood group...' onChange={handleChange}></input>
                     <input type="submit" value="Search" onClick={handleSubmit}></input>
                 </div>
 
@@ -111,6 +111,7 @@ const SearchDonor = ({ setIsLoggedIn }) => {
                             <th>Address</th>
                             <th>Phone No</th>
                             <th>Email</th>
+                            <th>Status</th>
                         </tr>
                         {
                             donors.map((val, k) => {
@@ -121,6 +122,7 @@ const SearchDonor = ({ setIsLoggedIn }) => {
                                         <td>{val[donor_key]['add']}</td>
                                         <td>{val[donor_key]['phn']}</td>
                                         <td>{val[donor_key]['email']}</td>
+                                        <td>{val[donor_key]['status']}</td>
                                     </tr>
                                 )
                             })
