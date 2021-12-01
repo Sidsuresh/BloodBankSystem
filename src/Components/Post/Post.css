@@ -1,0 +1,166 @@
+@import url('https://fonts.googleapis.com/css2?family=Hahmlet&display=swap');
+
+.content1 .searchbar{
+    text-align: center;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.content1 .searchbar input[type='text'] {
+    width: 50%;
+    padding: 2% 4%;
+    font-size: 1.2rem;
+    border-radius: 10px;
+    border: 1px solid black;
+}
+
+.content1 .searchbar input[type="submit"]{
+    /* margin-left: 5%; */
+    /* margin-top: 40px; */
+    border: none; 
+    background: DarkOrange;
+    color: white;
+    cursor: pointer; 
+    font-size: 1.1rem;
+    font-weight: bold;
+    outline: none;
+    padding: 2% 4%;
+    border-radius: 14px;
+    transition: 0.25s;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.content1 .sdtable table { 
+    margin-top: 5%;
+    width: 100%;
+    font-size: 1.1rem;
+    text-align: center;
+    border: 1px solid DarkOrange;
+    border-radius: 10px;
+    border-spacing: 0;
+}
+
+.content1 .sdtable table td {
+    border-bottom: 1px solid DarkOrange;
+    padding: 1.5% 2.5%;
+    
+} 
+.content1 .sdtable table th { 
+    border-bottom: 1px solid DarkOrange;
+    padding: 2% 4%;
+    background-color: #CA4549;
+    color: white;
+}
+.content1 .sdtable table tr:last-child > td {
+    border-bottom: none;
+}
+
+.content1 .sdtable table tr:last-child td:first-child {
+    border-bottom-left-radius: 10px;
+}
+
+.content1 .sdtable table tr:last-child td:last-child {
+    border-bottom-right-radius: 10px;
+}
+
+.content1 .sdtable table tr:first-child th:first-child {
+    border-top-left-radius: 10px;
+}
+
+.content1 .sdtable table tr:first-child th:last-child {
+    border-top-right-radius: 10px;
+}
+
+.content1 .sdtable table tr:nth-child(even){
+    background-color: #FFF4EF;
+}
+
+.content1 .sdtable table input[type="submit"] {
+    background-color: green;
+    border: none;
+    cursor: pointer;
+    color: white;
+    padding: 2% 4%;
+    font-weight: bold;
+    font-size: 0.9rem;
+    border-radius: 8px;
+}
+
+
+.content1 {
+    grid-row: 1;
+    grid-column: 3;
+    display: flex;
+    /* margin-top: 3%; */
+    justify-content: space-evenly;
+    flex-direction: row;
+}
+
+.content1 .form-card {
+    display: flex;
+    justify-content: space-evenly;
+    background: white;
+    align-items: left;
+    flex-direction: column;
+    border-radius: 15px;
+    width: 55%;
+    min-height: 340px;
+    box-shadow: 0 0px 20px rgba(0,0,0,0.4);
+    font-size: 1.2rem;
+    padding: 2.5%;
+    text-align: left;
+    font-family: 'Hahmlet', serif;
+}
+
+.content1 .form-card label { 
+    cursor: pointer; 
+    display: inline-block; 
+    padding: 3px 10px;
+    margin: 8px 0; 
+    width: 30%; 
+    font-size: 1.1rem;
+}
+
+.content1 .form-card input {
+    font-size: 1.05rem; 
+    border: 1px solid #ccc;
+    padding: 3px 6px; 
+    margin: 8px 0;
+    border-radius: 5px;
+}
+
+.content1 .button-wrap {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+
+.content1 .form-card input[type="submit"]{
+    margin-top: 40px;
+    border: none; 
+    background: #237215; 
+    color: white;
+    cursor: pointer; 
+    font-size: 1rem;
+    font-weight: bold;
+    outline: none;
+    padding: 2% 4%;
+    border-radius: 24px;
+    transition: 0.25s;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.content1 .form-card input[type="reset"]{
+    margin-top: 40px;
+    border: none; 
+    background: brown;
+    color: white;
+    cursor: pointer; 
+    font-size: 1rem;
+    font-weight: bold;
+    outline: none;
+    padding: 2% 4%;
+    border-radius: 24px;
+    transition: 0.25s;
+    font-family: Arial, Helvetica, sans-serif;
+}

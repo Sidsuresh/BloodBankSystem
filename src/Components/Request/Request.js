@@ -1,7 +1,6 @@
 import '../WelcomePagePatient/WelcomePagePatient.css'
-import './SearchDonor.css'
+import './Request.css'
 import { useNavigate } from 'react-router-dom'
-import useForm from '../useForm'
 import { Link } from 'react-router-dom'
 import { FaSearch } from 'react-icons/fa'
 import { IoCreateOutline } from 'react-icons/io5'
@@ -9,32 +8,36 @@ import { BiLogOut } from 'react-icons/bi'
 
 import db from '../../firebase-config'
 import { ref, child, get } from "firebase/database";
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
+import { useParams } from "react-router-dom";
 
 
-const SearchDonor = ({ setIsLoggedIn }) => {
-    const navigate = useNavigate();
+const Request = ({ setIsLoggedIn }) => {
+    let { id } = useParams();
     const [donors, setDonors] = useState([]);
+    var bgp_map = { "AP": "A+", "AN": "A-", "BP": "B+", "BN": "B-", "ABP": "AB+", "ABN": "AB-", "OP": "O+", "ON": "O-" };
+    const bgp = bgp_map[id];
+    const navigate = useNavigate();
     const onLogOut = () => {
         setIsLoggedIn(false);
         navigate('/');
     }
-    const onSubmit = (data) => {
-        const dbRef = ref(db);
+
+    const readData = () => {
         var donors = []
+        const dbRef = ref(db);
         get(child(dbRef, "users/")).then((snapshot) => {
             if (snapshot.exists()) {
                 console.log(snapshot.val());
                 snapshot.forEach((childSnapshot) => {
                     var childKey = childSnapshot.key;
                     var childData = childSnapshot.val();
-                    if ((childData['bgp'] === data['search_bar']) && (childData['acnt'] === "Donor")) {
-                        console.log(childKey, childData);
+                    if (childData['acnt'] === "Donor" && childData['bgp'] === bgp) {
                         donors = [
                             ...donors,
                             { [childKey]: childData }
                         ];
-                        console.log(donors)
+                        console.log(childKey, childData);
                     }
                 });
                 setDonors(donors);
@@ -45,31 +48,7 @@ const SearchDonor = ({ setIsLoggedIn }) => {
             console.error(error);
         });
     }
-    const onError = (err) => {
-        var msg = ""
-        for (const e in err) {
-            msg += err[e] + "\n"
-        }
-        alert(msg)
-    }
-    const { handleChange, handleSubmit } = useForm({
-        validations: {
-            search_bar: {
-                pattern: {
-                    // value: '^(A+|A-|B+|B-|AB+|AB-|O+|O-)$',
-                    value: '^[ABO][B]?[+-]$',
-                    message: "Search cannot be empty and can only be A+, A-, B+, B-, AB+, AB-, O+, O-.",
-                },
-            }
-        },
-        onSubmit: (data) => onSubmit(data),
-        onError: onError,
-        initialValues: {
-            search_bar: ""
-        },
-        passData: true,
-    });
-
+    useEffect(readData, [bgp]);
     return (
         <div className='pat-container'>
             <div className='sidebar'>
@@ -98,12 +77,8 @@ const SearchDonor = ({ setIsLoggedIn }) => {
                     Logout
                 </button>
             </div>
-            <div className='content'>
-                <div className='searchbar'>
-                    <input type='text' id='search_bar' name='search_bar' placeholder='Search...' onChange={handleChange}></input>
-                    <input type="submit" value="Search" onClick={handleSubmit}></input>
-                </div>
 
+            <div className='content'>
                 <div className='sdtable'>
                     <table id='sdonor'>
                         <tr>
@@ -128,9 +103,10 @@ const SearchDonor = ({ setIsLoggedIn }) => {
                     </table>
                 </div>
             </div>
+
         </div>
     )
 }
 
-export default SearchDonor;
+export default Request;
 

@@ -1,10 +1,11 @@
-import '../WelcomePagePatient/WelcomePagePatient.css'
-import './SearchDonor.css'
+import '../WelcomePageAdmin/WelcomePageAdmin.css'
+import './SearchDonorAdmin.css'
 import { useNavigate } from 'react-router-dom'
 import useForm from '../useForm'
 import { Link } from 'react-router-dom'
 import { FaSearch } from 'react-icons/fa'
-import { IoCreateOutline } from 'react-icons/io5'
+import { GoMail } from "react-icons/go";
+import { BsCardChecklist } from "react-icons/bs";
 import { BiLogOut } from 'react-icons/bi'
 
 import db from '../../firebase-config'
@@ -12,7 +13,7 @@ import { ref, child, get } from "firebase/database";
 import { useState } from 'react'
 
 
-const SearchDonor = ({ setIsLoggedIn }) => {
+const SearchDonorAdmin = ({ setIsLoggedIn }) => {
     const navigate = useNavigate();
     const [donors, setDonors] = useState([]);
     const onLogOut = () => {
@@ -71,29 +72,29 @@ const SearchDonor = ({ setIsLoggedIn }) => {
     });
 
     return (
-        <div className='pat-container'>
+        <div className='admin-container'>
             <div className='sidebar'>
-                <Link to="/user/patient/donor" className="row">
+                <Link to="/user/admin/inbox" className="row">
                     <div className='sbdico'>
-                        <FaSearch />
+                        <GoMail/>
+                    </div>
+                    Inbox
+                </Link>
+                <Link to="/user/admin/searchdonor" className="row">
+                    <div className='sbdico'>
+                        <FaSearch/>
                     </div>
                     Search Donor
                 </Link>
-                <Link to="/user/patient/blood" className="row">
+                <Link to="/user/admin/request" className="row">
                     <div className='sbdico'>
-                        <FaSearch />
+                        <BsCardChecklist/>
                     </div>
-                    Check Available Blood Types
-                </Link>
-                <Link to="/user/patient/request" className="row">
-                    <div className='sbdico'>
-                        <IoCreateOutline />
-                    </div>
-                    Request Status
+                    Check Request
                 </Link>
                 <button className="button-row" onClick={onLogOut}>
                     <div className='sbdico'>
-                        <BiLogOut />
+                        <BiLogOut/>
                     </div>
                     Logout
                 </button>
@@ -132,5 +133,5 @@ const SearchDonor = ({ setIsLoggedIn }) => {
     )
 }
 
-export default SearchDonor;
+export default SearchDonorAdmin;
 
