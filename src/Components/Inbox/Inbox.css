@@ -42,3 +42,8 @@
     /* background-color: #FFBCDD; */
     background-color: #FFF4EF;
 }
+
+
+#decline {
+    background-color: red;
+}

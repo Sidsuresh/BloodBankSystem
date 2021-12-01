@@ -29,46 +29,19 @@ const CheckBloodType = ({ setIsLoggedIn }) => {
 
     const readData = () => {
         const dbRef = ref(db);
-        var data = [{ "A+": 0 }, { "A-": 0 }, { "B+": 0 }, { "B-": 0 }, { "AB+": 0 }, { "AB-": 0 }, { "O+": 0 }, { "O-": 0 }]
-        get(child(dbRef, "users/")).then((snapshot) => {
+        var data = []
+        get(child(dbRef, "bloodbank/")).then((snapshot) => {
             if (snapshot.exists()) {
                 console.log(snapshot.val());
                 snapshot.forEach((childSnapshot) => {
                     var childKey = childSnapshot.key;
                     var childData = childSnapshot.val();
-                    if (childData['acnt'] === "Donor") {
-                        switch (childData['bgp']) {
-                            case "A+":
-                                data[0][childData['bgp']]++;
-                                break;
-                            case "A-":
-                                data[1][childData['bgp']]++;
-                                break;
-                            case "B+":
-                                data[2][childData['bgp']]++;
-                                break;
-                            case "B-":
-                                data[3][childData['bgp']]++;
-                                break;
-                            case "AB+":
-                                data[4][childData['bgp']]++;
-                                break;
-                            case "AB-":
-                                data[5][childData['bgp']]++;
-                                break; 
-                            case "O+":
-                                data[6][childData['bgp']]++;
-                                break;
-                            case "O-":
-                                data[7][childData['bgp']]++;
-                                break;
-                            default:
-                                console.log("Wrong");
-                                break;
-                        }
-                        console.log(childKey, childData);
-                        console.log(data)
-                    }
+                    data = [
+                        ...data,
+                        { [childKey]: childData }
+                    ];
+                    console.log(childKey, childData);
+                    console.log(data);
                 });
                 setBloodgrp(data);
             } else {
@@ -132,23 +105,14 @@ const CheckBloodType = ({ setIsLoggedIn }) => {
                                 } else {
                                     id += "N";
                                 }
-                                if (val[donor_key] === 0) {
-                                    return (
-                                        <tr key={k}>
-                                            <td>{donor_key}</td>
-                                            <td>{val[donor_key]}</td>
-                                            <td>{<input type="submit" name="request" value='Post' onClick={onPost}/>}</td>
-                                        </tr>
-                                    )
-                                } else {
-                                    return (
-                                        <tr key={k}>
-                                            <td>{donor_key}</td>
-                                            <td>{val[donor_key]}</td>
-                                            <td>{<input type="submit" name="request" value='Request' onClick={() => onRequest(id)} />}</td>
-                                        </tr>
-                                    )
-                                }
+                                return (
+                                    <tr key={k}>
+                                        <td>{donor_key}</td>
+                                        <td>{val[donor_key]}</td>
+                                        <td>{<input type="submit" name="request" value='Post' onClick={onPost}/>} &emsp;
+                                            {<input type="submit" name="request" value='Request' onClick={() => onRequest(id)}/>}</td>
+                                    </tr>
+                                )
                             })
                         }
                     </table>

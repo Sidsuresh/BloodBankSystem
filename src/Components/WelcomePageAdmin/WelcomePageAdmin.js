@@ -4,7 +4,6 @@ import {Link} from 'react-router-dom'
 import {FaSearch} from 'react-icons/fa'
 import {BiLogOut} from 'react-icons/bi'
 import { GoMail } from "react-icons/go";
-import { BsCardChecklist } from "react-icons/bs";
 
 const WelcomePageAdmin = ({setIsLoggedIn}) =>  {
     const navigate = useNavigate();
@@ -27,12 +26,6 @@ const WelcomePageAdmin = ({setIsLoggedIn}) =>  {
                     <FaSearch/>
                 </div>
                 Search Donor
-            </Link>
-            <Link to="/user/admin/request" className="row">
-                <div className='sbdico'>
-                    <BsCardChecklist/>
-                </div>
-                Check Request
             </Link>
             <button className="button-row" onClick={onLogOut}>
                 <div className='sbdico'>
