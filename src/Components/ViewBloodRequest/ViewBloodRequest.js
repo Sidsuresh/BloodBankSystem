@@ -61,7 +61,7 @@ const ViewBloodRequest = ({ setIsLoggedIn }) => {
                     </div>
                     Create Blood Bank Camp
                 </Link>
-                <Link to="/user/donor/viewreqt" className="row">
+                <Link to="/user/donor/viewreqt" className="row active">
                     <div className='sbdico'>
                         <FaSearch />
                     </div>

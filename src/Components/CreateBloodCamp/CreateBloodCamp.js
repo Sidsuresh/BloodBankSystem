@@ -86,7 +86,7 @@ const CreateBloodCamp = ({ setIsLoggedIn }) => {
                     </div>
                     Search Blood Bank Camp
                 </Link>
-                <Link to="/user/donor/createcamp" className="row">
+                <Link to="/user/donor/createcamp" className="row active">
                     <div className='sbdico'>
                         <IoCreateOutline />
                     </div>

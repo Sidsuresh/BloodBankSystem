@@ -75,7 +75,7 @@ const SearchBloodCamp = ({ setIsLoggedIn }) => {
     return (
         <div className='donor-container'>
             <div className='sidebar'>
-                <Link to="/user/donor/searchcamp" className="row">
+                <Link to="/user/donor/searchcamp" className="row active">
                     <div className='sbdico'>
                         <FaSearch />
                     </div>

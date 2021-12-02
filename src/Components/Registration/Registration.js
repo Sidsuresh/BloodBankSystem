@@ -44,8 +44,8 @@ const Registration = () =>  {
             },
             phn: {
                 pattern: {
-                    value: '^.{1,}$',
-                    message: "Phone number cannot be empty.",
+                    value: '^[1-9][0-9]{9}$',
+                    message: "Phone number cannot be empty or should be 10 digits.",
                 },
             },
             email: {

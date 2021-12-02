@@ -79,7 +79,7 @@ const SearchDonorAdmin = ({ setIsLoggedIn }) => {
                     </div>
                     Inbox
                 </Link>
-                <Link to="/user/admin/searchdonor" className="row">
+                <Link to="/user/admin/searchdonor" className="row active">
                     <div className='sbdico'>
                         <FaSearch/>
                     </div>

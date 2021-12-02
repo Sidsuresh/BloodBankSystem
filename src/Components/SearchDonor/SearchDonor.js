@@ -73,7 +73,7 @@ const SearchDonor = ({ setIsLoggedIn }) => {
     return (
         <div className='pat-container'>
             <div className='sidebar'>
-                <Link to="/user/patient/donor" className="row">
+                <Link to="/user/patient/donor" className="row active">
                     <div className='sbdico'>
                         <FaSearch />
                     </div>

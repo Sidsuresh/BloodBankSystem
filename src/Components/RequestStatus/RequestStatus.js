@@ -60,7 +60,7 @@ const RequestStatus = ({ setIsLoggedIn, username }) => {
                     </div>
                     Check Available Blood Types
                 </Link>
-                <Link to="/user/patient/status" className="row">
+                <Link to="/user/patient/status" className="row active">
                     <div className='sbdico'>
                         <IoCreateOutline />
                     </div>

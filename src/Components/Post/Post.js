@@ -33,7 +33,7 @@ const Post = ({ setIsLoggedIn }) => {
     }
     const { handleChange, handleSubmit } = useForm({
         validations: {
-            uname: {
+            email: {
                 pattern: {
                     value: '^.{1,}$',
                     message: "Username cannot be empty.",
@@ -49,7 +49,7 @@ const Post = ({ setIsLoggedIn }) => {
         onSubmit: onSubmit,
         onError: onError,
         initialValues: {
-            uname: "",
+            email: "",
             bgp: "A+",
             units: 1,
         },
@@ -65,7 +65,7 @@ const Post = ({ setIsLoggedIn }) => {
                     </div>
                     Search Donor
                 </Link>
-                <Link to="/user/patient/blood" className="row">
+                <Link to="/user/patient/blood" className="row active">
                     <div className='sbdico'>
                         <FaSearch />
                     </div>
@@ -87,8 +87,8 @@ const Post = ({ setIsLoggedIn }) => {
             <div className='content1'>
                 <form className='form-card' name="post-form" method="POST">
                     <div>
-                        <label htmlFor="uname">Username: </label>
-                        <input type="text" id="uname" name="uname" onChange={handleChange} />
+                        <label htmlFor="email">Email: </label>
+                        <input type="email" id="email" name="email" onChange={handleChange} />
                     </div>
                     <div>
                         <label htmlFor="bgp">Blood Group:</label>

@@ -60,7 +60,7 @@ const CheckBloodType = ({ setIsLoggedIn }) => {
                     </div>
                     Search Donor
                 </Link>
-                <Link to="/user/patient/blood" className="row">
+                <Link to="/user/patient/blood" className="row active">
                     <div className='sbdico'>
                         <FaSearch />
                     </div>

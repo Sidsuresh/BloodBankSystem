@@ -4,6 +4,7 @@ import LandingPage from './Components/LandingPage/LandingPage.js'
 import Registration from './Components/Registration/Registration.js';
 import Login from './Components/Login/Login.js';
 import ContactUs from './Components/ContactUs/ContactUs.js';
+import AboutUs from './Components/AboutUs/AboutUs';
 import WelcomePageDonor from './Components/WelcomePageDonor/WelcomePageDonor.js';
 import WelcomePagePatient from './Components/WelcomePagePatient/WelcomePagePatient.js';
 import WelcomePageAdmin from './Components/WelcomePageAdmin/WelcomePageAdmin.js';
@@ -47,6 +48,7 @@ function App() {
         <Routes>
           <Route path="/" element={ defaultRouting() }/>
           <Route path="/contact_us" exact element={<ContactUs />}/>
+          <Route path="/about_us" exact element={<AboutUs />}/>
           <Route path="/signup" exact element={<Registration />}/>
           <Route path="/login" exact element={<Login setIsLoggedIn={setIsLoggedIn} setUsername={setUsername} setAccType={setAccType}/>}/>
           <Route path="/user/patient" element={isLoggedIn ? <WelcomePagePatient setIsLoggedIn={setIsLoggedIn} />:<LandingPage />}></Route>

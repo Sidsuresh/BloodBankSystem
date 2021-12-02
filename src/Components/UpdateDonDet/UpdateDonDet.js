@@ -78,7 +78,7 @@ const UpdateDonDet = ({ setIsLoggedIn, username }) => {
                     </div>
                     View Blood Request
                 </Link>
-                <Link to="/user/donor/updateDet" className="row">
+                <Link to="/user/donor/updateDet" className="row active">
                     <div className='sbdico'>
                         <IoCreateOutline />
                     </div>

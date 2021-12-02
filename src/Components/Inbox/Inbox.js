@@ -120,7 +120,7 @@ const Inbox = ({ setIsLoggedIn }) => {
     return (
         <div className='admin-container'>
             <div className='sidebar'>
-                <Link to="/user/admin/inbox" className="row">
+                <Link to="/user/admin/inbox" className="row active">
                     <div className='sbdico'>
                         <GoMail />
                     </div>
