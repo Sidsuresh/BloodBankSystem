@@ -40,14 +40,13 @@ const WelcomePagePatient = ({setIsLoggedIn}) =>  {
             </button>
         </div>
         <div className='content'>
-            <p>Why we need you to give Blood?</p>
+            <p>Why you should use our Services?</p>
             <ul>
-				<li>Giving blood saves lives. The blood you give is a lifeline in an emergency and for people who need long-term treatments.</li>
-				<li>Many people would not be alive today if donors had not generously given their blood.</li>
-				<li>We need over 6,000 blood donations every day to treat patients in need across india. Which is why there’s always a need for people to give blood.</li>
-				<li>Each year we need approximately 200,000 new donors, as some donors can no longer give blood.</li>
-				<li>Most people between the ages of 17-65 are able to give blood.</li>
-				<li>Around half our current donors are over 45. That's why we need more young people (over the age of 17) to start giving blood, so we can make sure we have enough blood in the future.</li>
+				<li>The usage of different authentication methods provides best sense of security in terms of your data.</li>
+				<li>Requests are fulfilled within a short span of time due to which Service Time is very small.</li>
+				<li>Partnership with hospitals all over the nation making it easier for you to find your perfect match</li>
+				<li>Efficient and Secure transportation of Blood Bags to any location in the Indian Subcontinent.</li>
+				<li>It is easy to locate Donors in and around your location.</li>
 			</ul>
         </div>
     </div>
